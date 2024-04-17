@@ -22,7 +22,7 @@ if(isset($_GET['id'])) {
         header("Location: editBooks.php");
         exit();
     } else {
-        echo "Error deleting book: " . $conn->error;
+        echo "Error deleting book.";
     }
 
     $stmt->close();
@@ -32,4 +32,4 @@ if(isset($_GET['id'])) {
 
 $conn->close();
 ?>
-<a href="index.php">Back to Main Page</a>
+<a href="index.php">Back</a>

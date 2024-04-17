@@ -13,4 +13,7 @@
 </ul>
 
 </body>
+<footer>
+        <p>&copy; <?php echo date("Y"); ?> Dana Popa</p>
+</footer>
 </html>

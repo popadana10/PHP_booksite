@@ -1,14 +1,10 @@
 <?php
-$host = 'db';
-$username = 'root';
-$password = 'lionPass';
-$database = 'booksite';
-
-$conn = new mysqli($host, $username, $password, $database);
+$conn = new mysqli('db', 'root', 'lionPass', 'booksite');
 
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Connection failed");
 }
+
 $books = [];
 if (isset($_GET['search'])) {
     $searchTerm = mysqli_real_escape_string($conn, $_GET['search']);
@@ -44,13 +40,13 @@ $conn->close();
     </tr>
     <?php foreach ($books as $book) : ?>
         <tr>
-            <td><?php echo $book['title']; ?></td>
-            <td><?php echo $book['author']; ?></td>
-            <td><?php echo $book['genre']; ?></td>
-            <td><?php echo $book['description']; ?></td>
+            <td><?= $book['title']; ?></td>
+            <td><?= $book['author']; ?></td>
+            <td><?= $book['genre']; ?></td>
+            <td><?= $book['description']; ?></td>
             <td>
-                <a href="editBookForm.php?id=<?php echo $book['id']; ?>">Edit</a> |
-                <a href="deleteBooks.php?id=<?php echo $book['id']; ?>" onclick="return confirm('Are you sure you want to delete this book?')">Delete</a>
+                <a href="editBookForm.php?id=<?= $book['id']; ?>">Edit</a> |
+                <a href="deleteBooks.php?id=<?= $book['id']; ?>" onclick="return confirm('Delete this book?')">Delete</a>
             </td>
         </tr>
     <?php endforeach; ?>

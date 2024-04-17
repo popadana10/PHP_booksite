@@ -7,7 +7,7 @@ $database = 'booksite';
 $conn = new mysqli($host, $username, $password, $database);
 
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Connection failed");
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     if ($stmt->execute()) {
         echo "Book details updated successfully";
     } else {
-        echo "Error updating book details: " . $stmt->error;
+        echo "Error updating book details";
     }
 
     $stmt->close();

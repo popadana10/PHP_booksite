@@ -7,7 +7,7 @@ $database = 'booksite';
 $conn = new mysqli($host, $username, $password, $database);
 
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Connection failed");
 }
 
 $title = $_POST['title'];
@@ -18,13 +18,13 @@ $description = $_POST['description'];
 
 $sql = "INSERT INTO books (title, author, publishing_year, genre, description) VALUES ('$title', '$author', $year, '$genre', '$description')";
 
-
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error";
 }
 
 $conn->close();
 ?>
-<a href="index.php">Back to Main Page</a>
+
+<a href="index.php">Back</a>

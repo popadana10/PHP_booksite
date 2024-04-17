@@ -8,15 +8,10 @@
 <h2>List of Books</h2>
 
 <?php
-$host = 'db';
-$username = 'root';
-$password = 'lionPass';
-$database = 'booksite';
-
-$conn = new mysqli($host, $username, $password, $database);
+$conn = new mysqli('db', 'root', 'lionPass', 'booksite');
 
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Connection failed");
 }
 
 $books = [];
@@ -53,12 +48,17 @@ $conn->close();
     </tr>
     <?php foreach ($books as $book) : ?>
         <tr>
-            <td><?php echo $book['title']; ?></td>
-            <td><?php echo $book['author']; ?></td>
-            <td><?php echo $book['genre']; ?></td>
-            <td><?php echo $book['description']; ?></td>
-            <td><a href="editBookForm.php?id=<?php echo $book['id']; ?>">Edit</a></td>
+            <td><?= $book['title']; ?></td>
+            <td><?= $book['author']; ?></td>
+            <td><?= $book['genre']; ?></td>
+            <td><?= $book['description']; ?></td>
+            <td><a href="editBookForm.php?id=<?= $book['id']; ?>">Edit</a></td>
         </tr>
     <?php endforeach; ?>
 </table>
 <a href="index.php">Back to Main Page</a>
+<footer>
+        <p>&copy; <?= date("Y"); ?> Dana Popa</p>
+</footer>
+</body>
+</html>

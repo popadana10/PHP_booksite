@@ -58,6 +58,11 @@ if (isset($_GET['id'])) {
     echo "Book ID not provided";
 }
 ?>
-<a href="index.php">Back to Main Page</a>
+<a href="index.php">Back</a>
+
+<footer>
+    <p>&copy; <?php echo date("Y"); ?> Dana Popa</p>
+</footer>
+
 </body>
 </html>
